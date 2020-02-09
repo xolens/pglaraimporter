@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         verbose="true">
+    <php>
+        <env name="DB_CONNECTION" value="pgsql"/>
+        <env name="DB_HOST" value="127.0.0.1"/>
+        <env name="DB_PORT" value="5432"/>
+        <env name="DB_DATABASE" value="test"/>
+        <env name="DB_SCHEMA" value="test"/>
+        <env name="DB_USERNAME" value="test"/>
+        <env name="DB_PASSWORD" value="test"/>
+    </php>
+    <testsuites>
+        <testsuite name="test-reset-migration">
+            <file>src/Xolens/PgLaraimporter/Test/CleanSchemaTest.php</file>
+        </testsuite> 
+        <testsuite name="test-repository">
+            <file>src/Xolens/PgLaraimporter/Test/Repository/FieldRepositoryTest.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/ImportRepositoryTest.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/ImportFieldRepositoryTest.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/RecordRepositoryTest.php</file>
+        </testsuite>
+        <testsuite name="test-view-repository">
+            <file>src/Xolens/PgLaraimporter/Test/Repository/View/FieldViewRepository.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/View/ImportViewRepository.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/View/ImportFieldViewRepository.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/View/RecordViewRepository.php</file>
+        </testsuite> 
+    </testsuites>
+</phpunit>

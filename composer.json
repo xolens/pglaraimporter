@@ -1,0 +1,32 @@
+{
+    "name": "xolens/pglaraimporter",
+    "description": "Laravel file to database import package.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "Xolens",
+        "email": "xolens.official@gmail.com"
+    }],
+    "require": {
+        "xolens/pglarautil": "dev-master"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.4.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Xolens\\PgLaraimporter\\PgLaraimporterServiceProvider"
+            ]
+        }
+    },
+    "repositories": [{
+        "type": "path",
+        "url": "/var/www/repositories/xolens.laravel/local/*"
+    }]
+}
