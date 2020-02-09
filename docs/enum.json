@@ -1,0 +1,21 @@
+[
+    {
+        "name": "ImportState",
+        "visibility": "public",
+        "literals": [
+            "UPLOADED",
+            "RECORDED",
+            "COMPLETED",
+            "PARTIAL"
+        ]
+    },
+    {
+        "name": "FieldType",
+        "visibility": "public",
+        "literals": [
+            "INTEGER",
+            "REAL",
+            "TEXT"
+        ]
+    }
+]

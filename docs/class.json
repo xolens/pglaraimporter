@@ -1,0 +1,270 @@
+[
+    {
+        "tags": "priority.2",
+        "name": "Record",
+        "stereotype": null,
+        "visibility": "public",
+        "isAbstract": false,
+        "operations": [],
+        "attributes": [
+            {
+                "type": "increments",
+                "tags": "",
+                "required": true,
+                "name": "id",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "string",
+                "tags": "",
+                "required": true,
+                "name": "data",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "integer",
+                "tags": "index.Import",
+                "required": true,
+                "name": "importId",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "Date",
+                "tags": "",
+                "required": false,
+                "name": "importDate",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "Date",
+                "tags": "",
+                "required": false,
+                "name": "validationDate",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "String",
+                "tags": "",
+                "required": false,
+                "name": "rawData",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            }
+        ]
+    },
+    {
+        "tags": "priority.2",
+        "name": "ImportField",
+        "stereotype": null,
+        "visibility": "public",
+        "isAbstract": false,
+        "operations": [],
+        "attributes": [
+            {
+                "type": "increments",
+                "tags": "",
+                "required": true,
+                "name": "id",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "integer",
+                "tags": "index.Import",
+                "required": true,
+                "name": "importId",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "integer",
+                "tags": "index.Field",
+                "required": true,
+                "name": "fieldId",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "integer",
+                "tags": "",
+                "required": true,
+                "name": "position",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            }
+        ]
+    },
+    {
+        "tags": "priority.1",
+        "name": "Import",
+        "stereotype": null,
+        "visibility": "public",
+        "isAbstract": false,
+        "operations": [],
+        "attributes": [
+            {
+                "type": "increments",
+                "tags": "",
+                "required": true,
+                "name": "id",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "string",
+                "tags": "unique flex.1 embeddable",
+                "required": true,
+                "name": "name",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "string",
+                "tags": "",
+                "required": false,
+                "name": "description",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "integer",
+                "tags": "",
+                "required": true,
+                "name": "recordCount",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "enum",
+                "tags": "type.ImportState",
+                "required": true,
+                "name": "state",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            }
+        ]
+    },
+    {
+        "tags": "priority.1",
+        "name": "Field",
+        "stereotype": null,
+        "visibility": "public",
+        "isAbstract": false,
+        "operations": [],
+        "attributes": [
+            {
+                "type": "increments",
+                "tags": "",
+                "required": true,
+                "name": "id",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "string",
+                "tags": "unique flex.1 embeddable",
+                "required": true,
+                "name": "name",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "string",
+                "tags": "",
+                "required": false,
+                "name": "description",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            },
+            {
+                "type": "enum",
+                "tags": "type.FieldType",
+                "required": true,
+                "name": "type",
+                "visibility": "private",
+                "aggregation": "none",
+                "defaultValue": "",
+                "isReadOnly": false,
+                "isStatic": false,
+                "isUnique": false
+            }
+        ]
+    }
+]
