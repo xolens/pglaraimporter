@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\DB;
 use Xolens\PgLaraimporter\App\Util\PgLaraimporterMigration;
 
-class PgLaraimporterCreateViewImportField extends PgLaraimporterMigration
+class PgLaraimporterCreateViewSheet extends PgLaraimporterMigration
 {
     /**
      * Return table name
@@ -11,7 +11,7 @@ class PgLaraimporterCreateViewImportField extends PgLaraimporterMigration
      * @return string
      */
     public static function tableName(){
-        return 'import_field_view';
+        return 'sheet_view';
     }    
 
     /**
@@ -21,17 +21,14 @@ class PgLaraimporterCreateViewImportField extends PgLaraimporterMigration
      */
     public function up()
     {
-        $mainTable = PgLaraimporterCreateTableImportField::table();
-        $fieldTable = PgLaraimporterCreateTableField::table();
+        $mainTable = PgLaraimporterCreateTableSheet::table();
         $importTable = PgLaraimporterCreateTableImport::table();
         DB::statement("
             CREATE VIEW ".self::table()." AS(
                 SELECT 
                     ".$mainTable.".*,
-                    ".$fieldTable.".name as field_name,
                     ".$importTable.".name as import_name
                 FROM ".$mainTable." 
-                    LEFT JOIN ".$fieldTable." ON ".$fieldTable.".id = ".$mainTable.".field_id
                     LEFT JOIN ".$importTable." ON ".$importTable.".id = ".$mainTable.".import_id
             )
         ");

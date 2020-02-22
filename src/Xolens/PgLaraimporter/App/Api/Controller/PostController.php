@@ -7,10 +7,9 @@ use Xolens\PgLarautil\App\Api\Controller\BaseController;
 use Validator;
 
 
-use Xolens\PgLaraimporter\App\Repository\FieldRepository;
 use Xolens\PgLaraimporter\App\Repository\ImportRepository;
-use Xolens\PgLaraimporter\App\Repository\ImportFieldRepository;
 use Xolens\PgLaraimporter\App\Repository\RecordRepository;
+use Xolens\PgLaraimporter\App\Repository\SheetRepository;
 
 class PostController extends BaseController
 {
@@ -19,10 +18,9 @@ class PostController extends BaseController
     public static function map(){
         if(self::$map==null){
             self::$map =[
-                'field' => ['repository' => new FieldRepository(),'ACTION' => ['STORE','UPDATE','DELETE'] ],
                 'import' => ['repository' => new ImportRepository(),'ACTION' => ['STORE','UPDATE','DELETE'] ],
-                'importfield' => ['repository' => new ImportFieldRepository(),'ACTION' => ['STORE','UPDATE','DELETE'] ],
                 'record' => ['repository' => new RecordRepository(),'ACTION' => ['STORE','UPDATE','DELETE'] ],
+                'sheet' => ['repository' => new SheetRepository(),'ACTION' => ['STORE','UPDATE','DELETE'] ],
             ];
         }
         return self::$map;

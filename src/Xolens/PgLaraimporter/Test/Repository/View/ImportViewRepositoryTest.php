@@ -27,6 +27,7 @@ final class ImportViewRepositoryTest extends WritableTestPgLaraimporterBase
             'name' => 'name'.$i,
             'description' => 'description'.$i,
             'record_count' => 'recordCount'.$i,
+            'sheet_count' => 'sheetCount'.$i,
             'state' => 'state'.$i,
         ]);
         $this->assertTrue(true);
@@ -55,6 +56,7 @@ final class ImportViewRepositoryTest extends WritableTestPgLaraimporterBase
                 'name' => 'name'.$i,
                 'description' => 'description'.$i,
                 'record_count' => random_int(0,400000),
+                'sheet_count' => random_int(0,400000),
                 'state' => 'state'.$i,
             ]);
             $generatedItemsId[] = $item->response()->id;

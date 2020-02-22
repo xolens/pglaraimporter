@@ -17,7 +17,7 @@ class Import extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'description', 'record_count', 'state', 
+        'id', 'name', 'description', 'record_count', 'sheet_count', 'state', 
     ];
 
     /**

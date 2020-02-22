@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 use Xolens\PgLaraimporter\App\Util\PgLaraimporterMigration;
 
-class PgLaraimporterCreateTableImportField extends PgLaraimporterMigration
+class PgLaraimporterCreateTableSheet extends PgLaraimporterMigration
 {
     /**
      * Return table name
@@ -14,7 +14,7 @@ class PgLaraimporterCreateTableImportField extends PgLaraimporterMigration
      * @return string
      */
     public static function tableName(){
-        return 'import_field';
+        return 'sheet';
     }    
 
     /**
@@ -27,8 +27,8 @@ class PgLaraimporterCreateTableImportField extends PgLaraimporterMigration
         Schema::create(self::table(), function (Blueprint $table) {
             $table->increments('id');
             $table->integer('import_id')->index();
-            $table->integer('field_id')->index();
-            $table->integer('position');
+            $table->string('name');
+            $table->integer('record_count');
         });
         if(self::logEnabled()){
             self::registerForLog();

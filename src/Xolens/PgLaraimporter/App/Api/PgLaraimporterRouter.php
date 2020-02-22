@@ -17,7 +17,6 @@ class PgLaraimporterRouter
             Route::post('{subroute}/single','\Xolens\PgLaraimporter\App\Api\Controller\PostController@update');
             Route::post('{subroute}/delete','\Xolens\PgLaraimporter\App\Api\Controller\PostController@delete');
 
-            Route::get('field/{id}/{subroute}/index','\Xolens\PgLaraimporter\App\Api\Controller\GetByController@fieldBy');
             Route::get('import/{id}/{subroute}/index','\Xolens\PgLaraimporter\App\Api\Controller\GetByController@importBy');
 
             Route::post('{baseroure}/{id}/{subroute}/index', '\Xolens\PgLaraimporter\App\Api\Controller\PostByController@createBy');

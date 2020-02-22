@@ -26,11 +26,11 @@ class PgLaraimporterCreateTableRecord extends PgLaraimporterMigration
     {
         Schema::create(self::table(), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('data');
+            $table->string('sheet_name');
+            $table->json('data');
             $table->integer('import_id')->index();
-            $table->timestamp('import_date')->nullable();
-            $table->timestamp('validation_date')->nullable();
-            $table->string('raw_data')->nullable();
+            $table->timestamp('import_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->boolean('completed')->default(0);
         });
         if(self::logEnabled()){
             self::registerForLog();

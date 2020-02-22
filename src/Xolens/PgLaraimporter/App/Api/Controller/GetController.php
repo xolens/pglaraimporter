@@ -6,10 +6,9 @@ use Illuminate\Http\Request;
 use Xolens\PgLarautil\App\Api\Controller\BaseController;
 
 
-use Xolens\PgLaraimporter\App\Repository\View\FieldViewRepository;
 use Xolens\PgLaraimporter\App\Repository\View\ImportViewRepository;
-use Xolens\PgLaraimporter\App\Repository\View\ImportFieldViewRepository;
 use Xolens\PgLaraimporter\App\Repository\View\RecordViewRepository;
+use Xolens\PgLaraimporter\App\Repository\View\SheetViewRepository;
 
 class GetController extends BaseController
 {
@@ -18,10 +17,9 @@ class GetController extends BaseController
     public static function map(){
         if(self::$map==null){
             self::$map =[
-                'field' => ['repository' => new FieldViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
                 'import' => ['repository' => new ImportViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
-                'importfield' => ['repository' => new ImportFieldViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
                 'record' => ['repository' => new RecordViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
+                'sheet' => ['repository' => new SheetViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
             ];
         }
         return self::$map;

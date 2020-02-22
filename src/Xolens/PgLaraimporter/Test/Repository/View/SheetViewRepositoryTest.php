@@ -2,12 +2,12 @@
 
 namespace Xolens\PgLaraimporter\Test\Repository\View;
 
-use Xolens\PgLaraimporter\App\Repository\View\FieldViewRepository;
+use Xolens\PgLaraimporter\App\Repository\View\SheetViewRepository;
 use Xolens\PgLarautil\App\Util\Model\Sorter;
 use Xolens\PgLarautil\App\Util\Model\Filterer;
 use Xolens\PgLaraimporter\Test\WritableTestPgLaraimporterBase;
 
-final class FieldViewRepositoryTest extends WritableTestPgLaraimporterBase
+final class SheetViewRepositoryTest extends WritableTestPgLaraimporterBase
 {
     /**
      * Setup the test environment.
@@ -15,7 +15,7 @@ final class FieldViewRepositoryTest extends WritableTestPgLaraimporterBase
     protected function setUp(): void{
         parent::setUp();
         $this->artisan('migrate');
-        $this->repo = new FieldViewRepository();
+        $this->repo = new SheetViewRepository();
     }
 
     /**
@@ -23,10 +23,11 @@ final class FieldViewRepositoryTest extends WritableTestPgLaraimporterBase
      */
     public function test_make(){
         $i = rand(0, 10000);
+        $importId = $this->importRepo->model()::inRandomOrder()->first()->id;
         $item = $this->repository()->make([
+            'import_id' => $importId,
             'name' => 'name'.$i,
-            'description' => 'description'.$i,
-            'type' => 'type'.$i,
+            'record_count' => 'recordCount'.$i,
         ]);
         $this->assertTrue(true);
     }
@@ -50,10 +51,11 @@ final class FieldViewRepositoryTest extends WritableTestPgLaraimporterBase
         $generatedItemsId = [];
         
         for($i=$count; $i<($toGenerateCount+$count); $i++){
+            $importId = $this->importRepo->model()::inRandomOrder()->first()->id;
             $item = $this->repository()->create([
+                'import_id' => $importId,
                 'name' => 'name'.$i,
-                'description' => 'description'.$i,
-                'type' => 'type'.$i,
+                'record_count' => random_int(0,400000),
             ]);
             $generatedItemsId[] = $item->response()->id;
         }

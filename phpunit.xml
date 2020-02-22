@@ -17,16 +17,14 @@
             <file>src/Xolens/PgLaraimporter/Test/CleanSchemaTest.php</file>
         </testsuite> 
         <testsuite name="test-repository">
-            <file>src/Xolens/PgLaraimporter/Test/Repository/FieldRepositoryTest.php</file>
             <file>src/Xolens/PgLaraimporter/Test/Repository/ImportRepositoryTest.php</file>
-            <file>src/Xolens/PgLaraimporter/Test/Repository/ImportFieldRepositoryTest.php</file>
             <file>src/Xolens/PgLaraimporter/Test/Repository/RecordRepositoryTest.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/SheetRepositoryTest.php</file>
         </testsuite>
         <testsuite name="test-view-repository">
-            <file>src/Xolens/PgLaraimporter/Test/Repository/View/FieldViewRepository.php</file>
             <file>src/Xolens/PgLaraimporter/Test/Repository/View/ImportViewRepository.php</file>
-            <file>src/Xolens/PgLaraimporter/Test/Repository/View/ImportFieldViewRepository.php</file>
             <file>src/Xolens/PgLaraimporter/Test/Repository/View/RecordViewRepository.php</file>
+            <file>src/Xolens/PgLaraimporter/Test/Repository/View/SheetViewRepository.php</file>
         </testsuite> 
     </testsuites>
 </phpunit>

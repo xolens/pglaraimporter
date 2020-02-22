@@ -26,10 +26,11 @@ class PgLaraimporterCreateTableImport extends PgLaraimporterMigration
     {
         Schema::create(self::table(), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('description')->nullable();
             $table->integer('record_count');
-            $table->enum('state',['UPLOADED', 'RECORDED', 'COMPLETED', 'PARTIAL']);
+            $table->integer('sheet_count');
+            $table->enum('state',['STARTED', 'UPLOADED', 'COMPLETED', 'PARTIAL'])->default('STARTED');
         });
         if(self::logEnabled()){
             self::registerForLog();

@@ -3,11 +3,11 @@
 namespace Xolens\PgLaraimporter\App\Model\View;
 use Illuminate\Database\Eloquent\Model;
 
-use PgLaraimporterCreateViewImportField;
+use PgLaraimporterCreateViewSheet;
 
 
 
-class ImportFieldView extends Model
+class SheetView extends Model
 {
     public $timestamps = false;
 
@@ -26,7 +26,7 @@ class ImportFieldView extends Model
     protected $table;
     
     function __construct(array $attributes = []) {
-        $this->table = PgLaraimporterCreateViewImportField::table();
+        $this->table = PgLaraimporterCreateViewSheet::table();
         parent::__construct($attributes);
     }
 }

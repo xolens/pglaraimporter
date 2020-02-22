@@ -8,6 +8,7 @@ $factory->define(Import::class, function (Faker $faker) {
         'name' => $faker->name,
         'description' => $faker->name,
         'record_count' => $faker->randomNumber,
-        'state' => $faker->randomElement($array = ['UPLOADED', 'RECORDED', 'COMPLETED', 'PARTIAL']),
+        'sheet_count' => $faker->randomNumber,
+        'state' => $faker->randomElement($array = ['STARTED', 'UPLOADED', 'COMPLETED', 'PARTIAL']),
     ];
 });

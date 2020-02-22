@@ -19,9 +19,6 @@ class ImportRepository extends AbstractWritableRepository implements ImportRepos
             'id' => ['required',Rule::unique(PgLaraimporterCreateTableImport::table())->where(function ($query) use($id) {
                 return $query->where('id','!=', $id);
             })],
-            'name' => [Rule::unique(PgLaraimporterCreateTableImport::table())->where(function ($query) use($id) {
-                return $query->where('id','!=', $id);
-            })],
         ];
     }
     //*/

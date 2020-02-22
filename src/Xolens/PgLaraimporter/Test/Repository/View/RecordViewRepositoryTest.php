@@ -25,11 +25,11 @@ final class RecordViewRepositoryTest extends WritableTestPgLaraimporterBase
         $i = rand(0, 10000);
         $importId = $this->importRepo->model()::inRandomOrder()->first()->id;
         $item = $this->repository()->make([
+            'sheet_name' => 'sheet_name'.$i,
             'data' => 'data'.$i,
             'import_id' => $importId,
             'import_date' => 'importDate'.$i,
-            'validation_date' => 'validationDate'.$i,
-            'raw_data' => 'rawData'.$i,
+            'completed' => 'completed'.$i,
         ]);
         $this->assertTrue(true);
     }
@@ -55,11 +55,11 @@ final class RecordViewRepositoryTest extends WritableTestPgLaraimporterBase
         for($i=$count; $i<($toGenerateCount+$count); $i++){
             $importId = $this->importRepo->model()::inRandomOrder()->first()->id;
             $item = $this->repository()->create([
+                'sheet_name' => 'sheet_name'.$i,
                 'data' => 'data'.$i,
                 'import_id' => $importId,
-                'import_date' => '10-10-'.random_int(1987,2018),
-                'validation_date' => '10-10-'.random_int(1987,2018),
-                'raw_data' => 'rawData'.$i,
+                'import_date' => 'importDate'.$i,
+                'completed' => $i%2==0,
             ]);
             $generatedItemsId[] = $item->response()->id;
         }

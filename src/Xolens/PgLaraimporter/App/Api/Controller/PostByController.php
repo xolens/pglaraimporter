@@ -24,10 +24,9 @@ class PostByController extends PostController
     
     public function keyMap(){
         return [
-            'field' => 'field_id',
             'import' => 'import_id',
-            'import_field' => 'import_field_id',
             'record' => 'record_id',
+            'sheet' => 'sheet_id',
         ];
     }
 }

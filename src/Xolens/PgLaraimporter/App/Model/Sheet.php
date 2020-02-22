@@ -3,11 +3,12 @@
 namespace Xolens\PgLaraimporter\App\Model;
 use Illuminate\Database\Eloquent\Model;
 
-use PgLaraimporterCreateTableField;
+use PgLaraimporterCreateTableSheet;
 
 
-class Field extends Model
+class Sheet extends Model
 {
+    public const IMPORT_PROPERTY = 'import_id';
 
     public $timestamps = false;
 
@@ -17,7 +18,7 @@ class Field extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'description', 'type', 
+        'id', 'import_id', 'name', 'record_count', 
     ];
 
     /**
@@ -28,7 +29,11 @@ class Field extends Model
     protected $table;
     
     function __construct(array $attributes = []) {
-        $this->table = PgLaraimporterCreateTableField::table();
+        $this->table = PgLaraimporterCreateTableSheet::table();
         parent::__construct($attributes);
     }
+
+    public function import(){
+        return $this->belongsTo('Import','import_id');
+    } 
 }

@@ -12,13 +12,17 @@ class Record extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'data' => 'json',
+    ];
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'data', 'import_id', 'import_date', 'validation_date', 'raw_data', 
+        'id', 'sheet_name', 'data', 'import_id', 'import_date', 'completed', 
     ];
 
     /**

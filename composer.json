@@ -8,7 +8,8 @@
         "email": "xolens.official@gmail.com"
     }],
     "require": {
-        "xolens/pglarautil": "dev-master"
+        "xolens/pglarautil": "dev-master",
+        "maatwebsite/excel": "^2.1"
     },
     "require-dev": {
         "orchestra/testbench": "~3.4.0"
