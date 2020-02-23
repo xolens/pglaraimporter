@@ -51,6 +51,7 @@ class FileToDatabaseService
             }else{  //instance of CellCollection, Single sheet
                 $activeSheet = $reader->excel->getActiveSheet();
                 $sheetName = $activeSheet->getTitle();
+                $columnCount = \PHPExcel_Cell::columnIndexFromString($reader->excel->getActiveSheet()->getHighestColumn());
                 
                 $reader->each(function($data)  use ($import, $sheetName) {
                     $this->importRow($import, $data, $sheetName);
@@ -71,8 +72,8 @@ class FileToDatabaseService
         $sheet = new Sheet([
             'name'=>  $sheetName,
             'import_id' => $import->id,
-            'record_count' => $rowCount,
             'column_count' => $columnCount,
+            'record_count' => $rowCount,
         ]);
         $sheet->save();
         return $sheet;

@@ -18,7 +18,7 @@ class Sheet extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'import_id', 'name', 'record_count', 
+        'id', 'import_id', 'name', 'column_count', 'record_count', 
     ];
 
     /**

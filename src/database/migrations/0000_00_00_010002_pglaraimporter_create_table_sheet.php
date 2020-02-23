@@ -29,6 +29,7 @@ class PgLaraimporterCreateTableSheet extends PgLaraimporterMigration
             $table->integer('import_id')->index();
             $table->string('name');
             $table->integer('record_count');
+            $table->integer('column_count');
         });
         if(self::logEnabled()){
             self::registerForLog();
