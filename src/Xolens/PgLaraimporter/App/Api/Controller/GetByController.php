@@ -9,39 +9,40 @@ use Xolens\PgLarautil\App\Api\Controller\BaseController;
 use Xolens\PgLaraimporter\App\Repository\View\ImportViewRepository;
 use Xolens\PgLaraimporter\App\Repository\View\RecordViewRepository;
 use Xolens\PgLaraimporter\App\Repository\View\SheetViewRepository;
+use Xolens\PgLarautil\App\Util\Model\Sorter;
 
 class GetByController extends BaseController
 {
-    protected static $map;
-    
-    public static function map(){
-        if(self::$map==null){
-            self::$map =[
-                'import' => ['repository' => new ImportViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
-                'record' => ['repository' => new RecordViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
-                'sheet' => ['repository' => new SheetViewRepository(),'ACTION' => ['PAGINATE','GET'] ],
-            ];
-        }
-        return self::$map;
-    }
 
-    public function importBy(Request $request, $id, $subroute){
+    public function importBy(Request $request, $id, SheetViewRepository $sheetViewRepository){
         $id = (int)$id;
-        if($this->has($subroute, self::ACTION_PAGINATE)){
-            $page = $request->input('page');
-            $limit = $request->input('limit');
-            $sorter = self::inflateSorter($request);
-            $filterer = self::inflateFilterer($request);
-            return self::jsonResponse($this->repo($subroute)->paginateByImportSortedFiltered($id, $sorter, $filterer, $limit, $page));
+        $page = $request->input('page');
+        $limit = $request->input('limit');
+        $sorter = self::inflateSorter($request);
+        $filterer = self::inflateFilterer($request);
+        return self::jsonResponse($sheetViewRepository->paginateByImportSortedFiltered($id, $sorter, $filterer, $limit, $page));
+    }
+
+    public function sheetBy(Request $request, $id, RecordViewRepository $recordViewRepository){
+        $id = (int)$id;
+        $page = $request->input('page');
+        $limit = $request->input('limit');
+        $sorter = self::inflateJsonSorter($request);
+        $filterer = self::inflateFilterer($request);
+        return self::jsonResponse($recordViewRepository->paginateBySheetSortedFiltered($id, $sorter, $filterer, $limit, $page));
+    }
+
+    protected static function inflateJsonSorter(Request $request){
+        $sortArray = json_decode($request->input('sort'), true);
+        if($sortArray==null){
+            $sortArray = [['property'=>'id','direction'=>'DESC']];
         }
-        return $this->notFound($subroute);
-    }
-
-    protected function has($subroute, $action) {
-        return self::hasAction(self::map(), $subroute, $action);
-    }
-
-    public function repo($subroute){
-        return self::repository(self::map(), $subroute);
+        foreach ($sortArray as $key => $value){
+            if (strpos($value["property"], 'col') === 0) {
+                $sortArray[$key]["property"] = "data->".$value["property"];
+             }
+        }
+        $sorter = new Sorter($sortArray);
+        return $sorter;
     }
 }

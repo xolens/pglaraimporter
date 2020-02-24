@@ -9,6 +9,7 @@ use PgLaraimporterCreateTableRecord;
 class Record extends Model
 {
     public const IMPORT_PROPERTY = 'import_id';
+    public const SHEET_PROPERTY = 'sheet_id';
 
     public $timestamps = false;
 
@@ -22,7 +23,7 @@ class Record extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'sheet_name', 'data', 'import_id', 'import_date', 'completed', 
+        'id', 'sheet_id', 'data', 'import_id', 'import_date', 'completed', 
     ];
 
     /**

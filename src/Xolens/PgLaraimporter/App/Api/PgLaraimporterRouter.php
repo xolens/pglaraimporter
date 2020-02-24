@@ -2,8 +2,6 @@
 
 namespace Xolens\PgLaraimporter\App\Api;
 
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 use Route;
 
 class PgLaraimporterRouter
@@ -13,14 +11,16 @@ class PgLaraimporterRouter
             Route::get('{subroute}/index','\Xolens\PgLaraimporter\App\Api\Controller\GetController@paginate');
             Route::get('{subroute}/single/{id}','\Xolens\PgLaraimporter\App\Api\Controller\GetController@get');
 
-            Route::post('{subroute}/index','\Xolens\PgLaraimporter\App\Api\Controller\PostController@create');
-            Route::post('{subroute}/single','\Xolens\PgLaraimporter\App\Api\Controller\PostController@update');
-            Route::post('{subroute}/delete','\Xolens\PgLaraimporter\App\Api\Controller\PostController@delete');
+            Route::get('import/{id}/sheet/index','\Xolens\PgLaraimporter\App\Api\Controller\GetByController@importBy');
+            Route::get('sheet/{id}/record/index','\Xolens\PgLaraimporter\App\Api\Controller\GetByController@sheetBy');
 
-            Route::get('import/{id}/{subroute}/index','\Xolens\PgLaraimporter\App\Api\Controller\GetByController@importBy');
+            Route::post('import/index','\Xolens\PgLaraimporter\App\Api\Controller\ImportController@import');
+            Route::post('import/delete','\Xolens\PgLaraimporter\App\Api\Controller\ImportController@deleteImport');
+            Route::post('sheet/delete','\Xolens\PgLaraimporter\App\Api\Controller\ImportController@deleteSheet');
+            Route::post('record/delete','\Xolens\PgLaraimporter\App\Api\Controller\ImportController@deleteRecord');
 
-            Route::post('{baseroure}/{id}/{subroute}/index', '\Xolens\PgLaraimporter\App\Api\Controller\PostByController@createBy');
-            Route::post('{baseroure}/{id}/{subroute}/single', '\Xolens\PgLaraimporter\App\Api\Controller\PostByController@updateBy');
+            Route::post('record/single','\Xolens\PgLaraimporter\App\Api\Controller\ImportController@updateRecord');
+            //*/
         };
     }
 }

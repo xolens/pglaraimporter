@@ -40,4 +40,31 @@ class RecordViewRepository extends AbstractReadableRepository implements RecordV
         return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
      }
 
+
+   public function paginateBySheet($parentId, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(Record::SHEET_PROPERTY, $parentId);
+      return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
+
+   public function paginateBySheetSorted($parentId, Sorter $sorter, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(Record::SHEET_PROPERTY, $parentId);
+      return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
+
+   public function paginateBySheetFiltered($parentId, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(Record::SHEET_PROPERTY, $parentId);
+      $parentFilterer->and($filterer);
+      return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
+
+   public function paginateBySheetSortedFiltered($parentId, Sorter $sorter, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(Record::SHEET_PROPERTY, $parentId);
+      $parentFilterer->and($filterer);
+      return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
+
 }
